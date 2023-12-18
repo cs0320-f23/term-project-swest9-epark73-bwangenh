@@ -2,7 +2,7 @@ import "../styles/main.css";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ControlledInput } from "./ControlledInput";
 import { QueryInput } from "./QueryInput";
-import {constructJSON, Source, SourceData} from "./frontendJSON"
+import {constructJSON, Source, SourceData,Query} from "./frontendJSON"
 import { REPLView } from "./REPLView";
 
 
@@ -46,8 +46,20 @@ export function REPLInput(props: REPLInputProps) {
   const [score, setScore] = useState("");
   const [showTable, setShowTable] = useState(false); // state to control the visibility of the table
   //const [tableData, setTableData] = useState([]);
+  const [queries, setQueries] = useState<Query[]>([
+    { queryTitle: "", question: "", keywords: "" },
+  ]);
 
+    function handleAddQuery() {
+      const newQuery = { queryTitle: "", question: "", keywords: "" };
+      setQueries([...queries, newQuery]);
+    }
 
+    function updateQuery(index: number, field: keyof Query, value: string) {
+      const updatedQueries = [...queries];
+      updatedQueries[index] = { ...updatedQueries[index], [field]: value };
+      setQueries(updatedQueries);
+    }
 
   // This function is triggered when the submit button is clicked.
   function handleSubmit() {
@@ -64,7 +76,7 @@ export function REPLInput(props: REPLInputProps) {
 
     const validData: SourceData[] = dataValues
   .filter(item => item.length === 3) as SourceData[];
-  const jsonStructure = constructJSON(validData, queryTitle, question, keywords);
+  const jsonStructure = constructJSON(validData, queries);
   console.log(jsonStructure);
   console.log(JSON.stringify(jsonStructure));
 
@@ -116,7 +128,9 @@ fetch('http://localhost:4000/plme', {
   }
   return (
     <div className="repl-input">
-        {showTable && <REPLView question={question} tableData={props.tableData} />}
+      {showTable && (
+        <REPLView question={question} tableData={props.tableData} />
+      )}
 
       {inputValues.map((value, index) => (
         <ControlledInput
@@ -128,9 +142,9 @@ fetch('http://localhost:4000/plme', {
           }}
           title={titleValues[index]}
           setTitle={(newTitle: string) => {
-          const newTitleValues = [...titleValues];
-          newTitleValues[index] = newTitle;
-          setTitleValues(newTitleValues);
+            const newTitleValues = [...titleValues];
+            newTitleValues[index] = newTitle;
+            setTitleValues(newTitleValues);
           }}
           ariaLabel={`Command input ${index}`}
           pdfType={pdfTypes[index]}
@@ -148,20 +162,22 @@ fetch('http://localhost:4000/plme', {
       <button onClick={handleAddInputProp}> add new pdf </button>
 
       <h3>Enter Query information in these boxes</h3>
-                <QueryInput
-        queryTitle={queryTitle}
-        setQueryTitle={setQueryTitle}
-        question={question}
-        setQuestion={setQuestion}
-        keywords={keywords}
-        setKeywords={setKeywords}
-        // score = {Number(score)}
-        // setScore= {setScore}
-        ariaLabel="Query Input"
-      />
+      {queries.map((query, index) => (
+        <QueryInput
+          key={index}
+          queryTitle={query.queryTitle}
+          setQueryTitle={(value) => updateQuery(index, "queryTitle", value)}
+          question={query.question}
+          setQuestion={(value) => updateQuery(index, "question", value)}
+          keywords={query.keywords}
+          setKeywords={(value) => updateQuery(index, "keywords", value)}
+          ariaLabel={`Query Input ${index + 1}`}
+        />
+      ))}
+      <button onClick={handleAddQuery}>Add New Query</button>
       <button aria-label="manual submit button" onClick={() => handleSubmit()}>
-        Submit </button>
-     
+        Submit{" "}
+      </button>
     </div>
   );
 }

@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e742c7bf-548e-45cf-88ed-86ca41474cf0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_fontbox_3_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_pdfbox_3_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_pdfbox_io_3_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_10_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Filepath.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Filepath.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ControlledInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ControlledInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/QueryInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/QueryInput.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/REPLInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/REPLInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/frontendJSON.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/frontendJSON.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +66,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="term-project-swest9-epark73-bwangenh" />
@@ -90,7 +102,7 @@
       <workItem from="1702585023231" duration="3235000" />
       <workItem from="1702741717237" duration="132000" />
       <workItem from="1702741881290" duration="1201000" />
-      <workItem from="1702846201363" duration="10166000" />
+      <workItem from="1702846201363" duration="12286000" />
     </task>
     <servers />
   </component>
